@@ -5,12 +5,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <StartupObject>AdventOfCode.Day_3.Program</StartupObject>
+    <StartupObject>AdventOfCode.Day_4.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Day 1\Calories.txt" />
     <None Remove="Day 3\Rucksacks.txt" />
+    <None Remove="Day 4\CleaningAssignmentPairs.txt" />
     <None Remove="Day 5\CratesInput.txt" />
     <None Remove="Strategy.txt" />
   </ItemGroup>
@@ -19,6 +20,7 @@
     <EmbeddedResource Include="Day 1\Calories.txt" />
     <EmbeddedResource Include="Day 2\Strategy.txt" />
     <EmbeddedResource Include="Day 3\Rucksacks.txt" />
+    <EmbeddedResource Include="Day 4\CleaningAssignmentPairs.txt" />
     <EmbeddedResource Include="Day 5\CratesInput.txt" />
   </ItemGroup>
 

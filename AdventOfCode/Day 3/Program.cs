@@ -22,7 +22,8 @@ namespace AdventOfCode.Day_3
                 }
             }
 
-            Console.WriteLine(rucksacks.Chunk(3).Sum(r => Rucksack.GetGroupBadgePriority(r[0], r[1], r[2])));
+            Console.WriteLine($"The sum of all common item priorities is: {rucksacks.Sum(r => r.GetPriorityOfItemCommonToBothCompartments())}");
+            Console.WriteLine($"The sum of all elf badge priorities is: {rucksacks.Chunk(3).Sum(r => Rucksack.FindElfBadgePriority(r[0], r[1], r[2]))}");
         }
 
         private sealed class Rucksack
@@ -41,14 +42,14 @@ namespace AdventOfCode.Day_3
 
             public string CompartmentTwo { get; }
 
-            public char GetCommonElement()
+            public char GetItemCommonToBothCompartments()
             {
                 return CompartmentOne.Intersect(CompartmentTwo).Single();
             }
 
-            public int GetPriorityOfCommonElement()
+            public int GetPriorityOfItemCommonToBothCompartments()
             {
-                return GetPriority(GetCommonElement());
+                return GetPriority(GetItemCommonToBothCompartments());
             }
 
             public override string ToString()
@@ -63,16 +64,16 @@ namespace AdventOfCode.Day_3
                 return ((int)element) + offset;
             }
 
-            public static char GetElfBadgeForGroup(Rucksack one, Rucksack two, Rucksack three)
+            public static char FindElfBadge(Rucksack one, Rucksack two, Rucksack three)
             {
                 return (one.CompartmentOne + one.CompartmentTwo).Intersect(two.CompartmentOne + two.CompartmentTwo)
                                                                 .Intersect(three.CompartmentOne + three.CompartmentTwo)
                                                                 .Single();
             }
 
-            public static int GetGroupBadgePriority(Rucksack one, Rucksack two, Rucksack three)
+            public static int FindElfBadgePriority(Rucksack one, Rucksack two, Rucksack three)
             {
-                return GetPriority(GetElfBadgeForGroup(one, two, three));
+                return GetPriority(FindElfBadge(one, two, three));
             }
         }
     }
